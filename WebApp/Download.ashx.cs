@@ -34,8 +34,12 @@ namespace WebApp
 
             using (var fileStream = blobClient.OpenRead())
             {
-                context.Response.ContentType = "application/octet-stream";
-                context.Response.AddHeader("Content-Disposition", $"attachment; filename=\"{fileName}\"");
+                // The Content-Type header is used to specify the type of content being served.
+                context.Response.ContentType = MimeMapping.GetMimeMapping(fileName);
+
+                // The Content-Disposition header is used to specify whether the content should be
+                // displayed in browser (inline) or downloaded (attachment).
+                context.Response.AddHeader("Content-Disposition", "inline");
                 fileStream.CopyTo(context.Response.OutputStream);
                 context.Response.Flush();
                 context.Response.End();

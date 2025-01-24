@@ -9,7 +9,7 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <li>
-                    <a href='/Download.ashx?file=<%#  HttpUtility.UrlEncode(Eval("Name").ToString()) %>'><%# Eval("Name") %></a>
+                    <a target="_blank" href='/Download.ashx?file=<%#  HttpUtility.UrlEncode(Eval("Name").ToString()) %>'><%# Eval("Name") %></a>
                 </li>
             </ItemTemplate>
             <FooterTemplate>
